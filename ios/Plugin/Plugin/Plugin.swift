@@ -69,7 +69,8 @@ public class MediaPlugin: CAPPlugin {
         
         let albumId = call.getString("album")
         var targetCollection: PHAssetCollection?
-        
+
+         console.log("myPluginEvent was fired");
         if albumId != nil {
             let albumFetchResult = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [albumId!], options: nil)
             albumFetchResult.enumerateObjects({ (collection, count, _) in
@@ -320,7 +321,7 @@ public class MediaPlugin: CAPPlugin {
                 guard let image = fetchedImage else {
                     return
                 }
-                
+                console.log(asset)
                 a["identifier"] = asset.localIdentifier
                 
                 // TODO: We need to know original type
